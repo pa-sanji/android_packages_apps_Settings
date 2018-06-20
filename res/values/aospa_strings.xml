@@ -188,4 +188,9 @@
     <string name="ok">OK</string>
     <string name="edit_device_name_title">Edit Device Name</string>
     <string name="config_networkOverLimitComponent1" translatable="false">com.android.systemui/com.android.systemui.net.NetworkOverLimitActivity</string>
+
+    <!-- Hardware info -->
+    <string name="platform_revision">Platform</string>
+    <string name="total_ram">Total RAM</string>
+
 </resources>
