@@ -17,4 +17,7 @@
 
     <string name="platform_revision">Modelo SoC</string>
     <string name="total_ram">RAM Total</string>
+    <string name="usb_default_config_title">Configuração USB</string>
+    <string name="usb_default_config_summary">Escolha o comportamento padrão quando conectado a um dispositivo via USB</string>
+
 </resources>
