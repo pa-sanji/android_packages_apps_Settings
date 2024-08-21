@@ -197,4 +197,27 @@
     <string name="usb_default_config_title">USB configuration</string>
     <string name="usb_default_config_summary">Choose the default behavior when connected to a device via USB</string>
 
+    <!-- Spoofing settings-->
+    <string name="spoofing_settings_title">GMS Spoof</string>
+    <string name="spoofing_settings_summary">Spoofing settings for play integrity</string>
+    <string name="summary_pif_json_loader">Pick a custom play integrity fix JSON file for spoofing play integrity</string>
+    <string name="summary_applied_json_viewer">View currently applied play integrity fix values</string>
+
+    <!-- Main settings screen setting option to go in to Spoofing-->
+    <string name="json_spoofing_enabled_title">Use custom play integrity fix values</string>
+    <string name="pif_json_loader_title">Load play integrity fix JSON file</string>
+    <string name="pif_options_title">PIF Options</string>
+    <string name="applied_json_viewer_title">Applied play integrity fix values</string>
+    <string name="show_pif_properties_title">PIF properties</string>
+
+    <!-- Spoofing Search keywords -->
+    <string name="keywords_spoofing_settings">spoof, pif, pihook, json</string>
+    <!-- Search keyword for "PIF JSON Loader" settings [CHAR_LIMIT=NONE]-->
+    <string name="keywords_pif_json_loader">pif, pihook, json, load</string>
+    <!-- Search keyword for PIF JSON Viewer -->
+    <string name="keywords_pif_json_viewer">pif, pihook, json, view</string>
+
+    <!-- Errors -->
+    <string name="error_loading_properties">Error loading system properties</string>
+
 </resources>

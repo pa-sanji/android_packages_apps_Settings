@@ -36,6 +36,14 @@
         settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"/>
 
     <Preference
+        android:key="spoofing_settings"
+        android:title="@string/spoofing_settings_title"
+        android:icon="@drawable/ic_settings_spoofing"
+        android:order="-29"
+        android:summary="@string/spoofing_settings_summary"
+        android:fragment="com.android.settings.spoofing.SpoofingSettings"/>
+
+    <Preference
         android:key="date_time_settings"
         android:title="@string/date_and_time"
         android:icon="@drawable/ic_settings_date_time"
