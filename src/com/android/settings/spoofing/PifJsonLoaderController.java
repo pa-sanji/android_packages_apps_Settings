@@ -9,6 +9,8 @@ import java.util.Iterator;
 
 
 import android.os.SystemProperties;
+import com.android.internal.util.arrow.SystemRestartUtils;
+import android.os.Handler;
 import androidx.preference.Preference;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -29,10 +31,12 @@ public class PifJsonLoaderController extends AbstractPreferenceController
     private static final String TAG = "PifJsonLoaderController";
     public FileSelector mFileSelector;
     public JsonSpoofingEnabledController mJsonSpoofingEnabledController;
+    public Handler mHandler;
 
     public PifJsonLoaderController(Context context, FileSelector fileSelector, JsonSpoofingEnabledController jsonSpoofingEnabledController) {
         super(context);
         mFileSelector = fileSelector;
+        mHandler = ((SpoofingSettings) fileSelector).getHandler();
         mJsonSpoofingEnabledController = jsonSpoofingEnabledController;
     }
 
@@ -83,5 +87,8 @@ public class PifJsonLoaderController extends AbstractPreferenceController
             Log.e(getLogTag(), "Error reading PIF JSON or setting properties", e);
             Toast.makeText(mContext, "Error loading PIF JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
+        mHandler.postDelayed(() -> {
+            SystemRestartUtils.restartSystem(mContext);
+        }, 1250);
     }
 }

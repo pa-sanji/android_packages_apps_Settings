@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.content.Context;
 import android.content.Intent;
 import com.android.settings.R;
+import android.os.Handler;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -26,6 +27,7 @@ public class SpoofingSettings extends DashboardFragment implements PreferenceCon
 
     private static final String TAG = "SpoofingSettings";
     private PifJsonLoaderController pifJsonLoaderController;
+    private Handler mHandler;
 
     @Override
     protected String getLogTag() {
@@ -46,6 +48,16 @@ public class SpoofingSettings extends DashboardFragment implements PreferenceCon
         return R.xml.spoofing_prefs;
     }
 
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        mHandler = new Handler();
+    }
+
+    public Handler getHandler() {
+        return mHandler;
+    }
+    
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
