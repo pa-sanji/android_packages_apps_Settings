@@ -15,6 +15,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.core.PreferenceControllerMixin;
 
 import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.internal.util.arrow.SystemRebootUtils;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settingslib.search.SearchIndexable;
 
@@ -49,13 +50,9 @@ public class SpoofingSettings extends DashboardFragment implements PreferenceCon
     }
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onAttach(Context context) {
+        super.onAttach(context);
         mHandler = new Handler();
-    }
-
-    public Handler getHandler() {
-        return mHandler;
     }
     
     @Override
@@ -95,7 +92,12 @@ public class SpoofingSettings extends DashboardFragment implements PreferenceCon
         if (requestCode == 10001 && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             // Delegate the result back to the controller.
-            getPifJsonLoaderController().loadPifJson(uri);
+            int retval = getPifJsonLoaderController().loadPifJson(uri);
+            if (retval == 0) {
+                mHandler.postDelayed(() -> {
+                SystemRebootUtils.showSystemRebootDialog(getContext());
+                }, 1250);
+            }
         }
     }
 

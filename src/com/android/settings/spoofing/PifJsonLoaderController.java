@@ -9,8 +9,6 @@ import java.util.Iterator;
 
 
 import android.os.SystemProperties;
-import com.android.internal.util.arrow.SystemRestartUtils;
-import android.os.Handler;
 import androidx.preference.Preference;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -31,12 +29,10 @@ public class PifJsonLoaderController extends AbstractPreferenceController
     private static final String TAG = "PifJsonLoaderController";
     public FileSelector mFileSelector;
     public JsonSpoofingEnabledController mJsonSpoofingEnabledController;
-    public Handler mHandler;
 
     public PifJsonLoaderController(Context context, FileSelector fileSelector, JsonSpoofingEnabledController jsonSpoofingEnabledController) {
         super(context);
         mFileSelector = fileSelector;
-        mHandler = ((SpoofingSettings) fileSelector).getHandler();
         mJsonSpoofingEnabledController = jsonSpoofingEnabledController;
     }
 
@@ -68,7 +64,7 @@ public class PifJsonLoaderController extends AbstractPreferenceController
         return false;
     }
 
-    public void loadPifJson(Uri uri) {
+    public int loadPifJson(Uri uri) {
         Log.d(getLogTag(), "Loading PIF JSON from URI: " + uri.toString());
         try (InputStream inputStream = mContext.getContentResolver().openInputStream(uri)) {
             if (inputStream != null) {
@@ -82,13 +78,13 @@ public class PifJsonLoaderController extends AbstractPreferenceController
                     SystemProperties.set("persist.sys.pihooks_" + key, value);
                 }
                 Toast.makeText(mContext, "PIF JSON loaded successfully", Toast.LENGTH_SHORT).show();
+                return 0;
             }
         } catch (Exception e) {
             Log.e(getLogTag(), "Error reading PIF JSON or setting properties", e);
             Toast.makeText(mContext, "Error loading PIF JSON: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        mHandler.postDelayed(() -> {
-            SystemRestartUtils.restartSystem(mContext);
-        }, 1250);
+            return -1;
+        } 
+        return -1;
     }
 }
