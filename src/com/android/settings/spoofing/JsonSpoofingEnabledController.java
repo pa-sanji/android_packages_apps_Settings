@@ -9,7 +9,7 @@ import android.os.SystemProperties;
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
-import com.android.internal.util.arrow.SystemRestartUtils;
+import com.android.internal.util.arrow.SystemRebootUtils;
 import androidx.preference.Preference;
 
 import com.arrow.support.preferences.SystemSettingSwitchPreference;
@@ -41,7 +41,7 @@ public class JsonSpoofingEnabledController extends AbstractPreferenceController
         Log.d(getPreferenceKey(), "Spoofing enabled: " + enabled);
         SystemProperties.set("persist.sys.custom_pif", enabled ? "true" : "false");
         mCallback.updatePreferenceStatus(mContext);
-        SystemRestartUtils.showSystemRestartDialog(mContext);
+        SystemRebootUtils.showSystemRebootDialog(mContext);
         return true;
     }
 
