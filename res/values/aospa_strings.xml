@@ -198,11 +198,17 @@
     <string name="usb_default_config_summary">Choose the default behavior when connected to a device via USB</string>
 
     <!-- Spoofing settings-->
-    <string name="spoofing_settings_title">GMS Spoof</string>
-    <string name="spoofing_settings_summary">Spoofing settings for play integrity</string>
+    <string name="spoofing_settings_title">Spoofing</string>
+    <string name="spoofing_settings_summary">Misc device spoofing settings</string>
     <string name="summary_pif_json_loader">Pick a custom play integrity fix JSON file for spoofing play integrity</string>
     <string name="summary_applied_json_viewer">View currently applied play integrity fix values</string>
 
+
+    <!-- Google photos spoof strings -->
+    <string name="gphotos_options_title"> Google Photos </string>
+    <string name="gphotos_spoof_switch_title"> Enable Google photos unlimited backup </string>
+    <!-- Search Google photos spoofing-->
+    <string name="keywords_gphotos_spoof"> photos, backup, google </string>
     <!-- Main settings screen setting option to go in to Spoofing-->
     <string name="json_spoofing_enabled_title">Use custom play integrity fix values</string>
     <string name="pif_json_loader_title">Load play integrity fix JSON file</string>

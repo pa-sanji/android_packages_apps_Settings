@@ -62,6 +62,10 @@ public class SpoofingSettings extends DashboardFragment implements PreferenceCon
 
         final JsonSpoofingEnabledController jsonSpoofingEnabledController = new JsonSpoofingEnabledController(
                 activity, this /* UpdatePreferenceStatusCallback */);
+        
+        final PhotosSpoofSwitchController photosSpoofSwitchController = new PhotosSpoofSwitchController(
+            activity);
+ 
         pifJsonLoaderController = new PifJsonLoaderController(
                 activity, this /* FileSelector */, jsonSpoofingEnabledController);
     
@@ -69,6 +73,7 @@ public class SpoofingSettings extends DashboardFragment implements PreferenceCon
     
         controllers.add(pifJsonLoaderController);
         controllers.add(new AppliedJsonViewerController(activity, jsonSpoofingEnabledController));
+        controllers.add(photosSpoofSwitchController);
         return controllers;
     }
 
