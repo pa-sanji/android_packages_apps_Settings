@@ -47,7 +47,7 @@ implements PreferenceControllerMixin, Preference.OnPreferenceChangeListener  {
     @Override
     public void updateState(Preference preference) {
         ((SystemSettingSwitchPreference) preference).setChecked(isEnabled());
-        preference.setSummary("Google photos unlimited backup " + (isEnabled() ? "enabled" : "disabled"));
+        preference.setSummary(isEnabled() ? R.string.summary_gphotos_spoof_enabled  : R.string.summary_gphotos_spoof_disabled);
     }
 
     public boolean isEnabled() {

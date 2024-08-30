@@ -19,6 +19,7 @@ public class JsonSpoofingEnabledController extends AbstractPreferenceController
 
     private static final String KEY_JSON_SPOOFING_ENABLED = "json_spoofing_enabled";
     private final UpdatePreferenceStatusCallback mCallback;
+    private static final String PI_HOOKS_JSON = "persist.sys.custom_pif";
 
     public JsonSpoofingEnabledController(Context context, UpdatePreferenceStatusCallback callback) {
         super(context);
@@ -39,7 +40,7 @@ public class JsonSpoofingEnabledController extends AbstractPreferenceController
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean enabled = (Boolean) newValue;
         Log.d(getPreferenceKey(), "Spoofing enabled: " + enabled);
-        SystemProperties.set("persist.sys.custom_pif", enabled ? "true" : "false");
+        SystemProperties.set(PI_HOOKS_JSON, enabled ? "true" : "false");
         mCallback.updatePreferenceStatus(mContext);
         SystemRebootUtils.showSystemRebootDialog(mContext);
         return true;
@@ -49,13 +50,12 @@ public class JsonSpoofingEnabledController extends AbstractPreferenceController
     public void updateState(Preference preference) {
         ((SystemSettingSwitchPreference) preference).setChecked(isEnabled());
 
-        String value = SystemProperties.get("persist.sys.custom_pif", "false");
-        preference.setSummary("Custom PIF " + (Boolean.parseBoolean(value) ? "enabled" : "disabled"));
+        preference.setSummary(isEnabled() ? R.string.summary_pif_enabled : R.string.summary_pif_disabled);
 
     }
 
     public boolean isEnabled() {
-        String value = SystemProperties.get("persist.sys.custom_pif", "false");
+        String value = SystemProperties.get(PI_HOOKS_JSON, "false");
         return Boolean.parseBoolean(value);
     }
 }
