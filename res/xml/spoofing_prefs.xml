@@ -60,6 +60,19 @@
             android:defaultValue="true"
             settings:keywords="@string/keywords_gphotos_spoof"/>
 
-        </PreferenceCategory>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/key_attestation_keybox_title">
+
+         <!-- Key attestation Spoofing -->
+        <com.arrow.support.preferences.SystemSettingSwitchPreference
+            android:key="key_attestation_switch"
+            android:title="@string/key_attestation_switch_title"
+            android:summary="@string/summary_key_attestation"
+            android:defaultValue="false"
+            settings:keywords="@string/keywords_gphotos_spoof"/>
+
+    </PreferenceCategory>
         
 </PreferenceScreen>

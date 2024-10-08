@@ -202,7 +202,11 @@
     <string name="spoofing_settings_summary">Misc device spoofing settings</string>
     <string name="summary_pif_json_loader">Pick a custom play integrity fix JSON file for spoofing play integrity</string>
     <string name="summary_applied_json_viewer">View currently applied play integrity fix values</string>
+    <string name="summary_key_attestation">Disables all built-in keybox and bootloader state spoofs. Required for modules like TrickyStore.</string>
 
+    <!-- Key attestation/ keybox spoof strings -->
+    <string name="key_attestation_keybox_title">Keybox/key attestation options</string>
+    <string name="key_attestation_switch_title">Disable key attestation spoofs</string>
 
     <!-- Google photos spoof strings -->
     <string name="gphotos_options_title"> Google Photos </string>
