@@ -200,9 +200,6 @@
     <!-- Spoofing settings-->
     <string name="spoofing_settings_title">Spoofing</string>
     <string name="spoofing_settings_summary">Misc device spoofing settings</string>
-    <string name="summary_pif_json_loader">Pick a custom play integrity fix JSON file for spoofing play integrity</string>
-    <string name="summary_applied_json_viewer">View currently applied play integrity fix values</string>
-    <string name="summary_key_attestation">Disables all built-in keybox and bootloader state spoofs. Required for modules like TrickyStore.</string>
 
     <!-- Key attestation/ keybox spoof strings -->
     <string name="key_attestation_keybox_title">Keybox/key attestation options</string>
@@ -219,18 +216,47 @@
     <string name="summary_gphotos_spoof_disabled"> Google photos unlimited backup is disabled</string>
 
     <!-- Main settings screen setting option to go in to Spoofing-->
-    <string name="json_spoofing_enabled_title">Use custom play integrity fix values</string>
-    <string name="pif_json_loader_title">Load play integrity fix JSON file</string>
-    <string name="pif_options_title">PIF Options</string>
-    <string name="applied_json_viewer_title">Applied play integrity fix values</string>
-    <string name="show_pif_properties_title">PIF properties</string>
+    <string name="spoofing_state_title">Enable spoofing options</string>
+    <string name="pif_options_title">PIF options</string>
+
+    <!--GMS Spoofing-->
+    <string name="gms_spoofing_enabled_title">Enable GMS spoofing</string>
+    <string name="gms_spoofing_enabled_summary">Spoof your device to pass play integrity.</string>
+
+    <!--PIF JSON Loader/Viewer-->
+    <string name="json_spoofing_enabled_title">Use custom PIF values</string>
+    <string name="pif_json_loader_title">Select PIF JSON file</string>
+    <string name="summary_pif_json_loader">Pick a custom PIF JSON file for spoofing play integrity.</string>
+    <string name="show_pif_properties_title">View PIF properties</string>
+    <string name="summary_show_pif_properties">View currently applied play integrity fix values.</string>
+    <string name="update_pif_json_title">Update PIF JSON</string>
+    <string name="summary_update_pif_json">Update the PIF JSON file with the latest values. Requires internet connection.</string>
+
+    <!-- Per-app spoofing -->
+    <string name="per_app_options_title">Per-app spoofing</string>
+    <string name="per_app_json_loader_title">Select per-app props JSON file</string>
+    <string name="per_app_spoofing_enabled_title">Enable per-app spoofing</string>
+    <string name="summary_per_app_spoofing_enabled">Spoof your device identity on a per-app basis.</string>
+    <string name="summary_per_app_json_loader">Pick a custom JSON file for per-app spoofing.</string>
+
+    <!--Spoof Google Apps-->
+    <string name="spoof_google_title">Spoof google apps</string>
+    <string name="summary_spoof_google">Spoof device to latest pixel for some google apps.</string>
+
+
+    <!-- Per app spoofing -->
+    <string name="keywords_per_app_spoofing_json_loader">per-app, spoof, json, load</string>
+    <!-- Spoof google apps-->
+    <string name="keywords_spoof_google">google, spoof, apps</string>
 
     <!-- Spoofing Search keywords -->
     <string name="keywords_spoofing_settings">spoof, pif, pihook, json</string>
     <!-- Search keyword for "PIF JSON Loader" settings [CHAR_LIMIT=NONE]-->
     <string name="keywords_pif_json_loader">pif, pihook, json, load</string>
     <!-- Search keyword for PIF JSON Viewer -->
-    <string name="keywords_pif_json_viewer">pif, pihook, json, view</string>
+    <string name="keywords_show_pif_properties">pif, pihook, json, view</string>
+    <!-- Search keyword for "Update PIF JSON" settings [CHAR_LIMIT=NONE]-->
+    <string name="keywords_update_pif_json">pif, pihook, json, update</string>
 
     <!-- Errors -->
     <string name="error_loading_properties">Error loading system properties</string>

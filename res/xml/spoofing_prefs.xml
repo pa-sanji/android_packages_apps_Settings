@@ -16,61 +16,97 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/spoofing_settings_title"
     settings:keywords="@string/keywords_spoofing_settings">
     
+    <com.arrow.support.preferences.SystemSettingMainSwitchPreference
+        android:key="persist.sys.pixelprops.all"
+        android:title="@string/spoofing_state_title"
+        android:defaultValue="true" />
+
     <PreferenceCategory
         android:title="@string/pif_options_title">
 
-        <!-- Enable Spoofing -->
-        <com.arrow.support.preferences.SystemSettingSwitchPreference
-            android:key="json_spoofing_enabled"
+        <!-- Enable GMS Spoofing -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gms"
+            android:title="@string/gms_spoofing_enabled_title"
+            android:summary="@string/gms_spoofing_enabled_summary"
+            android:dependency="persist.sys.pixelprops.all"
+            android:defaultValue="true" />
+
+
+        <!-- PIF JSON Enabled -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.custom_pif"
             android:title="@string/json_spoofing_enabled_title"
             android:summary="@string/summary_placeholder"
-            android:defaultValue="false" />
-    
-        <!-- PIF JSON Loader -->
-        <com.android.settingslib.RestrictedPreference
-            android:key="pif_json_loader"
-            android:title="@string/pif_json_loader_title"
-            android:summary="@string/summary_pif_json_loader"
-            settings:userRestriction="no_config_spoofing"
-            android:dependency="json_spoofing_enabled"
+            android:dependency="persist.sys.pixelprops.gms"
             settings:keywords="@string/keywords_pif_json_loader"/>
 
-        <!-- Applied JSON Viewer -->
+        <!-- PIF JSON Loader -->
         <com.android.settingslib.RestrictedPreference
-            android:key="applied_json_viewer"
-            android:title="@string/applied_json_viewer_title"
-            android:summary="@string/summary_applied_json_viewer"
-            settings:userRestriction="no_config_spoofing"
-            android:dependency="json_spoofing_enabled"
-            settings:keywords="@string/keywords_pif_json_viewer"/>
+            android:key="pif_json_file_loader"
+            android:title="@string/pif_json_loader_title"
+            android:summary="@string/summary_pif_json_loader"
+            android:dependency="persist.sys.pixelprops.custom_pif"
+            settings:keywords="@string/keywords_pif_json_loader"/>
+    
+        <!-- Update PIF JSON-->
+        <com.android.settingslib.RestrictedPreference
+            android:key="update_pif_json"
+            android:title="@string/update_pif_json_title"
+            android:summary="@string/summary_update_pif_json"
+            android:dependency="persist.sys.pixelprops.custom_pif"
+            settings:keywords="@string/keywords_update_pif_json"/>
+    
+        <!-- Show PIF Properties -->
+        <com.android.settingslib.RestrictedPreference
+            android:key="show_pif_properties"
+            android:title="@string/show_pif_properties_title"
+            android:summary="@string/summary_show_pif_properties"
+            android:dependency="persist.sys.pixelprops.custom_pif"
+            settings:keywords="@string/keywords_show_pif_properties"/>
+        
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/gphotos_options_title">
+        android:title="@string/per_app_options_title">
 
+                <!-- Enable Spoofing -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.perapp.enabled"
+            android:title="@string/per_app_spoofing_enabled_title"
+            android:summary="@string/summary_placeholder"
+            android:dependency="persist.sys.pixelprops.all"
+            android:defaultValue="false" />
+    
+            <!--Per-app spoofing-->
+        <com.android.settingslib.RestrictedPreference
+            android:key="per_app_props_json_loader"
+            android:title="@string/per_app_json_loader_title"
+            android:summary="@string/summary_per_app_json_loader"
+            android:dependency="persist.sys.perapp.enabled"
+            settings:keywords="@string/keywords_per_app_spoofing_json_loader"/>
+    
+        <!-- Spoof Google Apps-->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.google"
+            android:title="@string/spoof_google_title"
+            android:summary="@string/summary_spoof_google"
+            android:dependency="persist.sys.pixelprops.all"
+            android:defaultValue="true"
+            settings:keywords="@string/keywords_spoof_google"/>
+        
          <!-- Google photos Spoofing -->
-        <com.arrow.support.preferences.SystemSettingSwitchPreference
-            android:key="gphotos_spoof_switch"
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gphotos"
             android:title="@string/gphotos_spoof_switch_title"
             android:summary="@string/summary_placeholder"
+            android:dependency="persist.sys.pixelprops.all"
             android:defaultValue="true"
-            settings:keywords="@string/keywords_gphotos_spoof"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/key_attestation_keybox_title">
-
-         <!-- Key attestation Spoofing -->
-        <com.arrow.support.preferences.SystemSettingSwitchPreference
-            android:key="key_attestation_switch"
-            android:title="@string/key_attestation_switch_title"
-            android:summary="@string/summary_key_attestation"
-            android:defaultValue="false"
             settings:keywords="@string/keywords_gphotos_spoof"/>
 
     </PreferenceCategory>
