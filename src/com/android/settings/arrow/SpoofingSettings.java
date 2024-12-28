@@ -49,8 +49,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
 
-import com.custom.support.preferences.SystemSettingMainSwitchPreference;
-
 
 @SearchIndexable
 public class SpoofingSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
@@ -74,7 +72,7 @@ public class SpoofingSettings extends SettingsPreferenceFragment implements Pref
     private Preference mPerAppPropsJsonLoader;
     private Preference mPerAppSpoof;
     private Preference mUpdateJsonButton;
-    private SystemSettingMainSwitchPreference mPropOptions;
+    private Preference mPropOptions;
 
     private Handler mHandler;
 
@@ -88,15 +86,13 @@ public class SpoofingSettings extends SettingsPreferenceFragment implements Pref
         mGphotosSpoof = findPreference(SYS_GPHOTOS_SPOOF);
         mGmsSpoof = findPreference(SYS_GMS_SPOOF);
         mGoogleSpoof = findPreference(SYS_GOOGLE_SPOOF);
-        mPropOptions = (SystemSettingMainSwitchPreference) findPreference(SYS_PROP_OPTIONS);
+        mPropOptions = findPreference(SYS_PROP_OPTIONS);
         mPifJsonFileLoader = findPreference(KEY_PIF_JSON_FILE_LOADER);
         mPerAppPropsJsonLoader = findPreference(KEY_PER_APP_PROPS_JSON_LOADER);
         mUpdateJsonButton = findPreference(KEY_UPDATE_JSON_BUTTON);
 
         String model = SystemProperties.get("ro.product.model");
         isPixelDevice = SystemProperties.get("ro.soc.manufacturer").equals("Google");
-        boolean isOptionEnabled = SystemProperties.getBoolean(SYS_PROP_OPTIONS, true);
-        mPropOptions.setChecked(isOptionEnabled);
 
         mGmsSpoof.setDependency(SYS_PROP_OPTIONS);
         mGphotosSpoof.setDependency(SYS_PROP_OPTIONS);
@@ -301,20 +297,14 @@ public class SpoofingSettings extends SettingsPreferenceFragment implements Pref
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mGmsSpoof
+        if (preference == mPropOptions
+            ||preference == mGmsSpoof
             || preference == mGoogleSpoof
             || preference == mPerAppSpoof) {
             SystemRebootUtils.showSystemRebootDialog(getContext());
             return true;
         }
-        if (preference == mPropOptions) {
-            boolean value = (Boolean) newValue;
-            SystemProperties.set(SYS_PROP_OPTIONS, value ? "true" : "false");
-            mPropOptions.setChecked(value);
-                SystemRebootUtils.showSystemRebootDialog(getContext());
-                return true;
-        }
-        if (preference == mGphotosSpoof){
+        else if (preference == mGphotosSpoof){
             SystemRebootUtils.restartProcess(getContext(), "com.google.android.apps.photos");
             return true;
         }
