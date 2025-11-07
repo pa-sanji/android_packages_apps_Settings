@@ -29,10 +29,14 @@ import android.util.Log;
 import android.widget.Toast;
 import android.provider.Settings;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.preference.Preference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.custom.SystemRebootUtils;
+import com.android.settings.custom.KeyboxDataPreference;
+import com.android.settings.custom.BasePreferenceFragment;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -65,6 +69,8 @@ public class SpoofingSettings extends SettingsPreferenceFragment implements Pref
 
     private boolean isPixelDevice;
 
+    private KeyboxDataPreference keyboxDataPreference;
+
     private Preference mGmsSpoof;
     private Preference mGoogleSpoof;
     private Preference mGphotosSpoof;
@@ -76,11 +82,25 @@ public class SpoofingSettings extends SettingsPreferenceFragment implements Pref
 
     private Handler mHandler;
 
+    private ActivityResultLauncher<Intent> keyboxFilePickerLauncher;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHandler = new Handler();
         addPreferencesFromResource(R.xml.spoofing_prefs);
+
+        keyboxFilePickerLauncher =
+                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        if (keyboxDataPreference != null) {
+                            Intent data = result.getData();
+                            if (data != null) {
+                                keyboxDataPreference.handleFileSelected(data.getData());
+                            }
+                        }
+                    }
+                });
 
         mPerAppSpoof = findPreference(SYS_PER_APP_ENABLED);
         mGphotosSpoof = findPreference(SYS_GPHOTOS_SPOOF);
@@ -93,6 +113,11 @@ public class SpoofingSettings extends SettingsPreferenceFragment implements Pref
 
         String model = SystemProperties.get("ro.product.model");
         isPixelDevice = SystemProperties.get("ro.soc.manufacturer").equals("Google");
+
+        keyboxDataPreference = (KeyboxDataPreference) findPreference("keybox_data_setting");
+        if (keyboxDataPreference != null) {
+            keyboxDataPreference.setFilePickerLauncher(keyboxFilePickerLauncher);
+        }
 
         mGmsSpoof.setDependency(SYS_PROP_OPTIONS);
         mGphotosSpoof.setDependency(SYS_PROP_OPTIONS);

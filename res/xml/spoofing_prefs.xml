@@ -70,12 +70,19 @@
             android:dependency="persist.sys.pixelprops.custom_pif"
             settings:keywords="@string/keywords_show_pif_properties"/>
         
+        <!-- Keybox Data -->
+        <com.android.settings.custom.KeyboxDataPreference
+            android:key="keybox_data_setting"
+            android:title="@string/keybox_data_title"
+            android:summary="@string/keybox_data_summary"
+            android:defaultValue=""/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/per_app_options_title">
 
-                <!-- Enable Spoofing -->
+        <!-- Enable Spoofing -->
         <com.android.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.perapp.enabled"
             android:title="@string/per_app_spoofing_enabled_title"
@@ -83,7 +90,7 @@
             android:dependency="persist.sys.pixelprops.all"
             android:defaultValue="false" />
     
-            <!--Per-app spoofing-->
+        <!--Per-app spoofing-->
         <com.android.settingslib.RestrictedPreference
             android:key="per_app_props_json_loader"
             android:title="@string/per_app_json_loader_title"

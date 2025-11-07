@@ -249,6 +249,15 @@
     <!-- Spoof google apps-->
     <string name="keywords_spoof_google">google, spoof, apps</string>
 
+    <!-- Keybox Data -->
+    <string name="keybox_data_title">Select keybox XML file</string>
+    <string name="keybox_data_summary">Choose the keybox XML file to spoof key attestation system-wide for all apps. Click the delete button to remove the keybox data and disable spoofing</string>
+    <string name="keybox_data_cleared">XML data cleared</string>
+    <string name="keybox_invalid_file">Invalid file selected</string>
+    <string name="keybox_invalid_xml">Invalid XML: missing required data</string>
+    <string name="keybox_file_loaded">XML file loaded</string>
+    <string name="keybox_file_read_failed">Failed to read XML</string>
+
     <!-- Spoofing Search keywords -->
     <string name="keywords_spoofing_settings">spoof, pif, pihook, json</string>
     <!-- Search keyword for "PIF JSON Loader" settings [CHAR_LIMIT=NONE]-->
