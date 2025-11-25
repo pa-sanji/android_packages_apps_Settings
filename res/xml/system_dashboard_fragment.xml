@@ -41,7 +41,7 @@
         android:icon="@drawable/ic_settings_spoofing"
         android:order="-29"
         android:summary="@string/spoofing_settings_summary"
-        android:fragment="com.android.settings.aospa.SpoofingSettings"/>
+        android:fragment="com.android.settings.custom.SpoofingSettings"/>
     
     <Preference
         android:key="date_time_settings"
