@@ -21,7 +21,7 @@
     android:title="@string/spoofing_settings_title"
     settings:keywords="@string/keywords_spoofing_settings">
     
-    <com.android.settings.preferences.SystemPropertyMainSwitchPreference
+    <com.android.settings.preferences.SystemSettingSwitchPreference
         android:key="persist.sys.pixelprops.all"
         android:title="@string/spoofing_state_title"
         android:defaultValue="true" />
