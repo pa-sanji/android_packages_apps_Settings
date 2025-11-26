@@ -20,7 +20,7 @@ import android.provider.Settings;
 import android.os.UserHandle;
 import android.util.AttributeSet;
 
-import com.android.settings.preference.SelfRemovingSwitchPreference;
+import lineageos.preference.SelfRemovingSwitchPreference;
 
 public class SystemSettingSwitchPreference extends SelfRemovingSwitchPreference {
 
