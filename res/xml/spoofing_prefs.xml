@@ -30,7 +30,7 @@
         android:title="@string/pif_options_title">
 
         <!-- Enable GMS Spoofing -->
-        <com.android.settings.preferences.SystemPropertySwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="persist.sys.pixelprops.gms"
             android:title="@string/gms_spoofing_enabled_title"
             android:summary="@string/gms_spoofing_enabled_summary"
@@ -39,7 +39,7 @@
 
 
         <!-- PIF JSON Enabled -->
-        <com.android.settings.preferences.SystemPropertySwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="persist.sys.pixelprops.custom_pif"
             android:title="@string/json_spoofing_enabled_title"
             android:summary="@string/summary_placeholder"
@@ -83,7 +83,7 @@
         android:title="@string/per_app_options_title">
 
         <!-- Enable Spoofing -->
-        <com.android.settings.preferences.SystemPropertySwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="persist.sys.perapp.enabled"
             android:title="@string/per_app_spoofing_enabled_title"
             android:summary="@string/summary_placeholder"
@@ -99,7 +99,7 @@
             settings:keywords="@string/keywords_per_app_spoofing_json_loader"/>
     
         <!-- Spoof Google Apps-->
-        <com.android.settings.preferences.SystemPropertySwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="persist.sys.pixelprops.google"
             android:title="@string/spoof_google_title"
             android:summary="@string/summary_spoof_google"
@@ -108,7 +108,7 @@
             settings:keywords="@string/keywords_spoof_google"/>
         
          <!-- Google photos Spoofing -->
-        <com.android.settings.preferences.SystemPropertySwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="persist.sys.pixelprops.gphotos"
             android:title="@string/gphotos_spoof_switch_title"
             android:summary="@string/summary_placeholder"
