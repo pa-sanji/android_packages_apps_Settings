@@ -29,47 +29,6 @@
     <PreferenceCategory
         android:title="@string/pif_options_title">
 
-        <!-- Enable GMS Spoofing -->
-        <com.android.settings.preferences.SystemSettingSwitchPreference
-            android:key="persist.sys.pixelprops.gms"
-            android:title="@string/gms_spoofing_enabled_title"
-            android:summary="@string/gms_spoofing_enabled_summary"
-            android:dependency="persist.sys.pixelprops.all"
-            android:defaultValue="true" />
-
-
-        <!-- PIF JSON Enabled -->
-        <com.android.settings.preferences.SystemSettingSwitchPreference
-            android:key="persist.sys.pixelprops.custom_pif"
-            android:title="@string/json_spoofing_enabled_title"
-            android:summary="@string/summary_placeholder"
-            android:dependency="persist.sys.pixelprops.gms"
-            settings:keywords="@string/keywords_pif_json_loader"/>
-
-        <!-- PIF JSON Loader -->
-        <com.android.settingslib.RestrictedPreference
-            android:key="pif_json_file_loader"
-            android:title="@string/pif_json_loader_title"
-            android:summary="@string/summary_pif_json_loader"
-            android:dependency="persist.sys.pixelprops.custom_pif"
-            settings:keywords="@string/keywords_pif_json_loader"/>
-    
-        <!-- Update PIF JSON-->
-        <com.android.settingslib.RestrictedPreference
-            android:key="update_pif_json"
-            android:title="@string/update_pif_json_title"
-            android:summary="@string/summary_update_pif_json"
-            android:dependency="persist.sys.pixelprops.custom_pif"
-            settings:keywords="@string/keywords_update_pif_json"/>
-    
-        <!-- Show PIF Properties -->
-        <com.android.settingslib.RestrictedPreference
-            android:key="show_pif_properties"
-            android:title="@string/show_pif_properties_title"
-            android:summary="@string/summary_show_pif_properties"
-            android:dependency="persist.sys.pixelprops.custom_pif"
-            settings:keywords="@string/keywords_show_pif_properties"/>
-        
         <!-- Keybox Data -->
         <com.android.settings.custom.KeyboxDataPreference
             android:key="keybox_data_setting"
@@ -98,24 +57,6 @@
             android:dependency="persist.sys.perapp.enabled"
             settings:keywords="@string/keywords_per_app_spoofing_json_loader"/>
     
-        <!-- Spoof Google Apps-->
-        <com.android.settings.preferences.SystemSettingSwitchPreference
-            android:key="persist.sys.pixelprops.google"
-            android:title="@string/spoof_google_title"
-            android:summary="@string/summary_spoof_google"
-            android:dependency="persist.sys.pixelprops.all"
-            android:defaultValue="true"
-            settings:keywords="@string/keywords_spoof_google"/>
-        
-         <!-- Google photos Spoofing -->
-        <com.android.settings.preferences.SystemSettingSwitchPreference
-            android:key="persist.sys.pixelprops.gphotos"
-            android:title="@string/gphotos_spoof_switch_title"
-            android:summary="@string/summary_placeholder"
-            android:dependency="persist.sys.pixelprops.all"
-            android:defaultValue="true"
-            settings:keywords="@string/keywords_gphotos_spoof"/>
-
     </PreferenceCategory>
         
 </PreferenceScreen>
