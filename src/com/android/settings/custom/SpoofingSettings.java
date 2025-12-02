@@ -146,7 +146,7 @@ public class SpoofingSettings extends SettingsPreferenceFragment implements Pref
         });
          
         mUpdateJsonButton.setOnPreferenceClickListener(preference -> {
-            updatePropertiesFromUrl("https://raw.githubusercontent.com/RisingOS-staging/risingOS_wiki/refs/heads/fifteen/spoofing/PlayIntergrity/pif.json");
+            updatePropertiesFromUrl("https://raw.githubusercontent.com/pa-sanji/risingOS_wiki/refs/heads/fifteen/spoofing/PlayIntergrity/pif.json");
             return true;
         });
         
